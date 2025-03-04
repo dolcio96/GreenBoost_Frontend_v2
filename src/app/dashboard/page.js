@@ -160,8 +160,22 @@ const Dashboard = () => {
 
   return (
     <Box component="form" onSubmit={handleSubmit} sx={{ padding: "2rem" }}>
-      IMMAGINE GGGGGIGANTE
-
+      <StyledCard sx={{ textAlign: "center" }} elevation={0}> 
+         <Box
+                      component="img"
+                      src="/emissionsDashboard.jpeg"
+                      alt="Smartphone with delivery notification"
+                      sx={{
+                        maxWidth: "100%",
+                        height: "auto",
+                        borderRadius: 4,
+                        boxShadow: "0 20px 40px rgba(39, 204, 80, 0.3)"
+                      }}
+                      onError={(e) => {
+                        e.target.src = "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9";
+                      }}
+                    />
+      </StyledCard>
       <StyledCard>
         <CardContent>
           <Typography variant="h4" gutterBottom align="center" sx={{ mb: 4 }}>
@@ -169,7 +183,7 @@ const Dashboard = () => {
           </Typography>
 
           <Typography variant="h6" gutterBottom>
-          After sharing your information you will be contacted by our team to set up your company dashboard.
+         Condividi il tuo bilancio di sostenibilità e scopri dove è posizionata la tua azienda rispetto al mercato.
           </Typography>
 
 
