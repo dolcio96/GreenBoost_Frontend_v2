@@ -1,5 +1,4 @@
 "use client";
-
 import React, { useState, useCallback } from "react";
 import { Box, Card, CardContent, TextField, Checkbox, FormControlLabel, Button, Typography, Grid, FormGroup, Dialog, DialogTitle, DialogContent, DialogActions, Tooltip, FormHelperText } from "@mui/material";
 import { styled } from "@mui/system";
@@ -162,7 +161,7 @@ const Dashboard = () => {
   return (
     <Box component="form" onSubmit={handleSubmit} sx={{ padding: "2rem" }}>
       IMMAGINE GGGGGIGANTE
-      
+
       <StyledCard>
         <CardContent>
           <Typography variant="h4" gutterBottom align="center" sx={{ mb: 4 }}>
