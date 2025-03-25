@@ -6,43 +6,44 @@ import { FaQuoteLeft } from "react-icons/fa";
 import StyledButton from "@/components/buttons/StyledButton";
 
 const StyledAppBar = styled(AppBar)(({ theme }) => ({
-  background: "rgba(6, 73, 4, 0.63)",
+  background: "rgb(82, 102,77)",
   boxShadow: "0 4px 6px rgba(82, 187, 41, 0.1)"
 }));
 
 
 export const Header = () => (
-  
-<StyledAppBar position="static">
-        <Toolbar sx={{ justifyContent: "space-between" }}>
-          <Box component="img" 
-               src="/logoGB_White.png"
-               alt="Company Logo"
-               sx={{ height: 40, width: "auto" }}
-               onError={(e) => {
-                 e.target.src = "https://images.unsplash.com/photo-1563986768609-322da13575f3";
-               }}
-          />
-          <Box sx={{ display: { xs: "none", md: "flex" }, gap: 4 }}>
-            {["Features", "Pricing", "About", "Contact"].map((item) => (
-              <Button 
-                key={item}
-                color="inherit"
-                aria-label={`Navigate to ${item}`}
-              >
-                {item}
-              </Button>
-            ))}
-          </Box>
-          <StyledButton
-            variant="contained"
-            color="secondary"
-            aria-label="Start free trial"
+
+  <StyledAppBar position="static">
+    <Toolbar sx={{ justifyContent: "space-between" }}>
+      <Box component="img"
+        src="/logoD4D.svg"
+        alt="Company Logo"
+        sx={{ height: 40, width: "auto" }}
+        onError={(e) => {
+          e.target.src = "https://images.unsplash.com/photo-1563986768609-322da13575f3";
+        }}
+      />
+      <Box sx={{ display: { xs: "none", md: "flex" }, gap: 4 }}>
+        {["Features", "Pricing", "About", "Contact"].map((item) => (
+          <Button
+            key={item}
+            color="inherit"
+            aria-label={`Navigate to ${item}`}
           >
-            Start Free Trial
-          </StyledButton>
-        </Toolbar>
-      </StyledAppBar>
+            {item}
+          </Button>
+        ))}
+      </Box>
+      <StyledButton
+        variant="contained"
+        customColor="#AFA897" // Colore personalizzato
+        aria-label="Start free trial"
+      >
+        Start free trial
+      </StyledButton>
+
+    </Toolbar>
+  </StyledAppBar>
   /*
   <AppBar position="static" color="#DDDDDD">
     <Toolbar>

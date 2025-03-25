@@ -162,18 +162,22 @@ const Dashboard = () => {
     <Box component="form" onSubmit={handleSubmit} sx={{ padding: "2rem" }}>
       <StyledCard sx={{ textAlign: "center" }} elevation={0}> 
          <Box
-                      component="img"
-                      src="/emissionsDashboard.jpeg"
-                      alt="Smartphone with delivery notification"
-                      sx={{
-                        maxWidth: "100%",
-                        height: "auto",
-                        borderRadius: 4,
-                        boxShadow: "0 20px 40px rgba(39, 204, 80, 0.3)"
-                      }}
-                      onError={(e) => {
-                        e.target.src = "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9";
-                      }}
+                    component="video"
+                    src="/Dash.mp4"
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
+                    controls
+                    sx={{
+                      maxWidth: "100%",
+                      height: "auto",
+                      borderRadius: 4,
+                      boxShadow: "0 20px 40px rgba(39, 204, 80, 0.3)"
+                    }}
+                    onError={(e) => {
+                      e.target.src = "https://www.w3schools.com/html/mov_bbb.mp4";
+                    }}
                     />
       </StyledCard>
       <StyledCard>
@@ -334,6 +338,9 @@ const Dashboard = () => {
         </DialogActions>
       </Dialog>
     </Box>
+
+
+
   );
 };
 

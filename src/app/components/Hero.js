@@ -9,7 +9,7 @@ import StyledButton from "@/components/buttons/StyledButton";
 import Link from 'next/link';
 
 const TestimonialCard = styled(Card)(({ theme }) => ({
-  background: "rgba(7, 51, 5, 0.7)",
+  background: "rgb(82, 102,77)",
   padding: theme.spacing(3),
   borderRadius: 16,
   backdropFilter: "blur(10px)",
@@ -26,7 +26,7 @@ const EventHero = () => {
   }, []);
 
   return (
-    <Box sx={{ bgcolor: "rgba(51, 175, 46, 0.72)", minHeight: "100vh", color: "white" }}>
+    <Box sx={{ bgcolor: "rgba(50, 175, 46, 0)", minHeight: "100vh", color: "white", display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
       <Container maxWidth="lg" sx={{ mt: 0, mb: 0 }}>
         <Box
           sx={{
@@ -36,58 +36,43 @@ const EventHero = () => {
             gap: 6
           }}
         >
-          <Box
-            sx={{
-              flex: 1,
-              display: "flex",
-              justifyContent: "center"
-            }}
-          >
-            <Box
-              component="img"
-              src="/naturaAlberi.jpg"
-              alt="Smartphone with delivery notification"
-              sx={{
-                maxWidth: "100%",
-                height: "auto",
-                borderRadius: 4,
-                boxShadow: "0 20px 40px rgba(39, 204, 80, 0.3)"
-              }}
-              onError={(e) => {
-                e.target.src = "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9";
-              }}
-            />
-          </Box>
-
           <Box sx={{ flex: 1 }}>
             <Typography
               variant="h2"
               sx={{ mb: 3, fontWeight: "bold" }}
             >
-              Deliver Better.
+              Turn ESG Data into Powerfolls Sustainability Strategies.
               <br />
-              Deliver Faster.
+            
             </Typography>
 
             <Typography variant="h6" sx={{ mb: 4, opacity: 0.8 }}>
-              Transform your delivery experience with our cutting-edge platform.
-              Real-time tracking, instant notifications, and seamless integration
-              make delivery management effortless.
+              Laverage AI-poweredinsights to enhance your sustainability strategy. Analyze ESG performance, banchmark against industriey standards, and identify optimal parameters alygned to your goals.
             </Typography>
 
             <StyledButton
               variant="contained"
-              color="secondary"
+              customColor="#404E49"
               size="large"
               startIcon={<RxDashboard />}
-              aria-label="Accedi alla Dashboard"
+              aria-label="Buy Now"
               component={Link}
               href="/dashboard"
             >
-              Accedi alla Dashboard
+            Buy Now
             </StyledButton>
 
-
+            <StyledButton
+              variant="contained"
+              customColor="#AFA897"
+              size="large"
+              startIcon={<RxDashboard />}
+              aria-label="Watch Demo"
+              component={Link}
+              href="/dashboard"
+            >
+              Watch Demo
+            </StyledButton>
             <TestimonialCard>
               <Box sx={{ display: "flex", alignItems: "center", gap: 2, mb: 2 }}>
                 <Avatar
