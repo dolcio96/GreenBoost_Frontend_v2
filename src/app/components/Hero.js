@@ -1,20 +1,19 @@
+
+
+
+
+
 "use client";
 import React, { useState, useEffect } from "react";
-import { Box, Button, Container, Typography, AppBar, Toolbar, IconButton, useMediaQuery, useTheme, Card, Avatar, styled } from "@mui/material";
-import { FiDownload } from "react-icons/fi";
+import {
+  Box,
+  Typography,
+  useMediaQuery,
+  useTheme,
+} from "@mui/material";
 import { RxDashboard } from "react-icons/rx";
-import { FaQuoteLeft } from "react-icons/fa";
 import StyledButton from "@/components/buttons/StyledButton";
-
-import Link from 'next/link';
-
-const TestimonialCard = styled(Card)(({ theme }) => ({
-  background: "rgb(82, 102,77)",
-  padding: theme.spacing(3),
-  borderRadius: 16,
-  backdropFilter: "blur(10px)",
-  marginTop: theme.spacing(4)
-}));
+import Link from "next/link";
 
 const EventHero = () => {
   const theme = useTheme();
@@ -26,45 +25,75 @@ const EventHero = () => {
   }, []);
 
   return (
-    <Box sx={{ bgcolor: "rgba(50, 175, 46, 0)", minHeight: "100vh", color: "white", display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-      <Container maxWidth="lg" sx={{ mt: 0, mb: 0 }}>
+    <Box
+      sx={{
+        minHeight: "100vh",
+        color: theme.palette.text.primary,
+        display: "flex",
+        alignItems: "center",
+      }}
+    >
+      <Box
+        sx={{
+          width: "100%",
+          maxWidth: "1440px",
+          px: 8,
+        }}
+      >
         <Box
           sx={{
             display: "flex",
             flexDirection: isMobile ? "column" : "row",
             alignItems: "center",
-            gap: 6
+            gap: 6,
           }}
         >
-          <Box sx={{ flex: 1 }}>
+          <Box
+            sx={{
+              width: { xs: "100%", md: "50%" }, // 100% su mobile, 50% su schermi grandi
+            }}
+          >
             <Typography
               variant="h2"
-              sx={{ mb: 3, fontWeight: "bold" }}
+              sx={{
+                mb: 3,
+                fontWeight: "bold",
+                color: theme.palette.text.primary,
+              }}
             >
-              Turn ESG Data into Powerfolls Sustainability Strategies.
-              <br />
-            
+              Turn ESG Data into Powerful Sustainability Strategies
             </Typography>
 
-            <Typography variant="h6" sx={{ mb: 4, opacity: 0.8 }}>
-              Laverage AI-poweredinsights to enhance your sustainability strategy. Analyze ESG performance, banchmark against industriey standards, and identify optimal parameters alygned to your goals.
+            <Typography
+              variant="h6"
+              sx={{
+                mb: 4,
+                opacity: 0.8,
+                fontWeight: "bold",
+                color: theme.palette.text.tertiary,
+              }}
+            >
+              Leverage AI-powered insights to enhance your sustainability strategy.
+              Analyze ESG performance, benchmark against industry standards, and
+              identify optimal parameters aligned to your goals.
             </Typography>
 
             <StyledButton
               variant="contained"
-              customColor="#404E49"
+              color="primary"
               size="large"
               startIcon={<RxDashboard />}
               aria-label="Buy Now"
               component={Link}
               href="/dashboard"
+              sx={{ mr: 2 }}
             >
-            Buy Now
+              Buy Now
             </StyledButton>
 
             <StyledButton
               variant="contained"
-              customColor="#AFA897"
+              color="secondary"
               size="large"
               startIcon={<RxDashboard />}
               aria-label="Watch Demo"
@@ -73,29 +102,86 @@ const EventHero = () => {
             >
               Watch Demo
             </StyledButton>
-            <TestimonialCard>
-              <Box sx={{ display: "flex", alignItems: "center", gap: 2, mb: 2 }}>
-                <Avatar
-                  src="https://images.unsplash.com/photo-1494790108377-be9c29b29330"
-                  alt="Customer avatar"
-                  sx={{ width: 60, height: 60 }}
-                />
-                <Box>
-                  <Typography variant="h6">Carica il tuo bilancio di Sosteniblià</Typography>
-                  <Typography variant="body2" sx={{ opacity: 0.7 }}>
-                    -------------------------------------------------------------------
-                  </Typography>
-                </Box>
-              </Box>
-              <Typography variant="body1" sx={{ opacity: 0.9 }}>
-                Scopri come è posizionata la tua azienda nel mercato.
-              </Typography>
-            </TestimonialCard>
           </Box>
         </Box>
-      </Container>
+      </Box>
     </Box>
   );
 };
 
 export default EventHero;
+
+
+/*  <Box
+       sx={{
+         
+         minHeight: "100vh",
+         color: theme.palette.text.primary,
+         display: 'flex',
+         alignItems: 'center',       // Centro verticale
+         justifyContent: 'flex-start' // Allineamento a sinistra
+       }}
+     >
+     <Container maxWidth="lg" sx={{ mt: 0, mb: 0, px: 4 }}>
+ 
+         <Box
+           sx={{
+             display: "flex",
+             flexDirection: isMobile ? "column" : "row",
+             alignItems: "center",
+             gap: 6
+           }}
+         >
+           <Box sx={{ flex: 1 }}>
+             <Typography
+               variant="h1"
+               sx={{
+                 mb: 3,
+                 fontWeight: "bold",
+                 color: theme.palette.text.primary
+               }}
+             >
+               Turn ESG Data into Powerful Sustainability Strategies
+               <br />
+             </Typography>
+ 
+             <Typography
+               variant="h5"
+               sx={{
+                 mb: 4,
+                 opacity: 0.8,
+                 fontWeight: "bold",
+                 color: theme.palette.text.tertiary
+               }}
+             >
+               Leverage AI-powered insights to enhance your sustainability strategy. Analyze ESG performance, benchmark against industry standards, and identify optimal parameters aligned to your goals.
+             </Typography>
+ 
+             <StyledButton
+               variant="contained"
+               color="primary"
+               size="large"
+               startIcon={<RxDashboard />}
+               aria-label="Buy Now"
+               component={Link}
+               href="/dashboard"
+               sx={{ mr: 2 }}
+             >
+               Buy Now
+             </StyledButton>
+ 
+             <StyledButton
+               variant="contained"
+               color="secondary"
+               size="large"
+               startIcon={<RxDashboard />}
+               aria-label="Watch Demo"
+               component={Link}
+               href="/dashboard"
+             >
+               Watch Demo
+             </StyledButton>
+           </Box>
+         </Box>
+       </Container>
+     </Box>*/

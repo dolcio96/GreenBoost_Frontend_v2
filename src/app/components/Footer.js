@@ -1,60 +1,95 @@
 'use client';
-import { Box, Container, Grid, Typography, Link, Divider, IconButton } from "@mui/material";
+import { Box, Container, Grid, Typography, Link, Divider, IconButton, useTheme } from "@mui/material";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import GitHubIcon from "@mui/icons-material/GitHub";
 
 export const Footer = () => {
+  const theme = useTheme();
+
+  // Componente interno FooterLink (senza tipi)
+  const FooterLink = ({ href, children }) => (
+    <Link
+      href={href}
+    
+      display="block"
+      sx={{
+        color: theme.palette.text.secondary,
+        textDecoration: 'none',
+        '&:hover': { color: theme.palette.secondary.main }
+      }}
+    >
+      {children}
+    </Link>
+  );
+
   return (
-    <Box component="footer" sx={{ backgroundColor: "#1F2937", py: 6, color: "#E5E7EB" }}>
+    <Box component="footer" sx={{ bgcolor: theme.palette.background.light, py: 6, color: theme.palette.text.primary }}>
       <Container maxWidth="lg">
         <Grid container spacing={4} mb={4}>
-          <Grid item xs={12} md={3}>
-            <Typography variant="h5" fontFamily="Pacifico" color="primary" display="flex" alignItems="center" gap={1}>
-              D4D <Typography component="span" variant="body2" color="#808080">AI</Typography>
-            </Typography>
-            <Typography variant="body2" color="#808080">
+          <Grid item xs={12} md={3}    alignContent={"center"}
+                    justifyContent={"center"} 
+                     display="flex" flexDirection="column" alignItems="center">
+            <Box
+                    alignContent={"center"}
+                    justifyContent={"center"} 
+                     component="img"
+                     src="/LogoD4DChiaro.svg"
+                     alt="Company Logo"
+                     sx={{ height: 60, width: "auto" }}
+                     onError={(e) => {
+                       e.target.src = "https://images.unsplash.com/photo-1563986768609-322da13575f3";
+                     }}
+                   />
+            <Typography variant="body2" sx={{ color: theme.palette.text.primary }}>
               Empowering sustainable transformation through AI and data analytics.
             </Typography>
           </Grid>
+
           <Grid item xs={12} md={3}>
             <Typography variant="subtitle1" fontWeight={600}>Product</Typography>
             <Box>
-              <Link href="#" color="#808080" display="block" sx={{ textDecoration: 'none', '&:hover': { color: 'primary.main' }}}>Features</Link>
-              <Link href="#" color="#808080" display="block" sx={{ textDecoration: 'none', '&:hover': { color: 'primary.main' }}}>Pricing</Link>
-              <Link href="#" color="#808080" display="block" sx={{ textDecoration: 'none', '&:hover': { color: 'primary.main' }}}>Case Studies</Link>
-              <Link href="#" color="#808080" display="block" sx={{ textDecoration: 'none', '&:hover': { color: 'primary.main' }}}>Documentation</Link>
+              <FooterLink href="#">Features</FooterLink>
+              <FooterLink href="#">Pricing</FooterLink>
+              <FooterLink href="#">Case Studies</FooterLink>
+              <FooterLink href="#">Documentation</FooterLink>
             </Box>
           </Grid>
+
           <Grid item xs={12} md={3}>
             <Typography variant="subtitle1" fontWeight={600}>Company</Typography>
             <Box>
-              <Link href="#" color="#808080" display="block" sx={{ textDecoration: 'none', '&:hover': { color: 'primary.main' }}}>About</Link>
-              <Link href="#" color="#808080" display="block" sx={{ textDecoration: 'none', '&:hover': { color: 'primary.main' }}}>Blog</Link>
-              <Link href="#" color="#808080" display="block" sx={{ textDecoration: 'none', '&:hover': { color: 'primary.main' }}}>Careers</Link>
-              <Link href="#" color="#808080" display="block" sx={{ textDecoration: 'none', '&:hover': { color: 'primary.main' }}}>Contact</Link>
+              <FooterLink href="#">About</FooterLink>
+              <FooterLink href="#">Blog</FooterLink>
+              <FooterLink href="#">Careers</FooterLink>
+              <FooterLink href="#">Contact</FooterLink>
             </Box>
           </Grid>
+
           <Grid item xs={12} md={3}>
             <Typography variant="subtitle1" fontWeight={600}>Legal</Typography>
             <Box>
-              <Link href="#" color="#808080" display="block" sx={{ textDecoration: 'none', '&:hover': { color: 'primary.main' }}}>Privacy Policy</Link>
-              <Link href="#" color="#808080" display="block" sx={{ textDecoration: 'none', '&:hover': { color: 'primary.main' }}}>Terms of Service</Link>
-              <Link href="#" color="#808080" display="block" sx={{ textDecoration: 'none', '&:hover': { color: 'primary.main' }}}>Cookie Policy</Link>
+              <FooterLink href="#">Privacy Policy</FooterLink>
+              <FooterLink href="#">Terms of Service</FooterLink>
+              <FooterLink href="#">Cookie Policy</FooterLink>
             </Box>
           </Grid>
         </Grid>
+
         <Divider sx={{ borderColor: "#374151" }} />
+
         <Box display="flex" justifyContent="space-between" alignItems="center" pt={3}>
-          <Typography variant="body2" color="#808080">© 2025 D4D. All rights reserved.</Typography>
+          <Typography variant="body2" sx={{ color: theme.palette.text.primary }}>
+            © 2025 D4D. All rights reserved.
+          </Typography>
           <Box>
-            <IconButton href="#" color="#808080" sx={{ '&:hover': { color: 'primary.main' }}}>
+            <IconButton href="#" sx={{ color: theme.palette.text.primary, '&:hover': { color: theme.palette.secondary.main } }}>
               <LinkedInIcon />
             </IconButton>
-            <IconButton href="#" color="#808080" sx={{ '&:hover': { color: 'primary.main' }}}>
+            <IconButton href="#" sx={{ color: theme.palette.text.primary, '&:hover': { color: theme.palette.secondary.main } }}>
               <TwitterIcon />
             </IconButton>
-            <IconButton href="#" color="#808080" sx={{ '&:hover': { color: 'primary.main' }}}>
+            <IconButton href="#" sx={{ color: theme.palette.text.primary, '&:hover': { color: theme.palette.secondary.main } }}>
               <GitHubIcon />
             </IconButton>
           </Box>
@@ -63,4 +98,3 @@ export const Footer = () => {
     </Box>
   );
 };
-

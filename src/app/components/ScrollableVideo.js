@@ -21,7 +21,7 @@ const HeroVideo = () => {
 
     // Creazione e configurazione del video
     const video = document.createElement("video");
-    video.src = "/river.mp4"; // Video per l'hero
+    video.src = "/ocean.mp4"; // Video per l'hero
     video.loop = true;
     video.muted = true;
     video.autoplay = true;

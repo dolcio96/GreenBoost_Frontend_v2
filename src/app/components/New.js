@@ -64,8 +64,9 @@ const New = () => {
               { value: 35, name: "In Progress" },
               { value: 45, name: "Completed" },
               { value: 20, name: "Pending" },
+              { value: 40, name: "Pippo" },
             ],
-            color: ["#037932", "#34d058", "#94d3a2"],
+            color: ["#037932", "#34d058", "#94d3a2","#91a1a2"],
           },
         ],
       });

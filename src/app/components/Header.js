@@ -1,70 +1,48 @@
 "use client";
-import React, { useState, useEffect } from "react";
-import { Box, Button, Container, Typography, AppBar, Toolbar, IconButton, useMediaQuery, useTheme, Card, Avatar, styled } from "@mui/material";
-import { FiDownload } from "react-icons/fi";
-import { FaQuoteLeft } from "react-icons/fa";
+import React from "react";
+import { Box, Button, Toolbar, AppBar, useTheme } from "@mui/material";
 import StyledButton from "@/components/buttons/StyledButton";
+import { Link } from "react-scroll";
+export const Header = () => {
+  const theme = useTheme(); // Usa il tema MUI
 
-const StyledAppBar = styled(AppBar)(({ theme }) => ({
-  background: "rgb(82, 102,77)",
-  boxShadow: "0 4px 6px rgba(82, 187, 41, 0.1)"
-}));
+  return (
+    <AppBar position="static" sx={{ backgroundColor: theme.palette.background.dark, }}>
+      <Toolbar sx={{ justifyContent: "space-between" }}>
+        <Box
 
+          component="img"
+          src="/LogoD4DChiaro.svg"
+          alt="Company Logo"
+          sx={{ height: 60, width: "auto" }}
+          onError={(e) => {
+            e.target.src = "https://images.unsplash.com/photo-1563986768609-322da13575f3";
+          }}
+        />
+        <Box sx={{ display: { xs: "none", md: "flex" }, gap: 4 }}>
+          {["Benefits", "Features", "How it works", "Pricing"].map((item) => (
+            <Button key={item} color="inherit" aria-label={`Navigate to ${item}`} sx={{ fontSize: "1.3rem", fontWeight: 500, '&:hover': {
+            color: theme.palette.secondary.main,
+          },}}>
+              <Link to={item.toLowerCase().trim().replace(/\s+/g, '')} smooth={true} duration={500} offset={-70} >
+                {item }
+              </Link>
+            </Button>
+          ))}
+        </Box>
+        <StyledButton
+          variant="contained"
+          sx={{ backgroundColor: theme.palette.secondary.main, color: theme.palette.text.tertiary , '&:hover': {
+            color: theme.palette.secondary.main,
+            backgroundColor: theme.palette.background.light,
+            fontWeight:"bold",
 
-export const Header = () => (
-
-  <StyledAppBar position="static">
-    <Toolbar sx={{ justifyContent: "space-between" }}>
-      <Box component="img"
-        src="/logoD4D.svg"
-        alt="Company Logo"
-        sx={{ height: 40, width: "auto" }}
-        onError={(e) => {
-          e.target.src = "https://images.unsplash.com/photo-1563986768609-322da13575f3";
-        }}
-      />
-      <Box sx={{ display: { xs: "none", md: "flex" }, gap: 4 }}>
-        {["Features", "Pricing", "About", "Contact"].map((item) => (
-          <Button
-            key={item}
-            color="inherit"
-            aria-label={`Navigate to ${item}`}
-          >
-            {item}
-          </Button>
-        ))}
-      </Box>
-      <StyledButton
-        variant="contained"
-        customColor="#AFA897" // Colore personalizzato
-        aria-label="Start free trial"
-      >
-        Start free trial
-      </StyledButton>
-
-    </Toolbar>
-  </StyledAppBar>
-  /*
-  <AppBar position="static" color="#DDDDDD">
-    <Toolbar>
-      <Box sx={{ flexGrow: 1 }}>
-        <Link href="/" passHref>
-          <Box component="a" sx={{ display: 'flex', alignItems: 'center' }}>
-            <Image src="/logoGB.png" alt="Logo" width={120} height={40} />
-          </Box>
-        </Link>
-      </Box>
-      <Box sx={{ display: 'flex', gap: 2 }}>
-        <Link href="/" passHref>
-          <Button color="inherit">Home</Button>
-        </Link>
-        <Link href="/about" passHref>
-          <Button color="inherit">About</Button>
-        </Link>
-        <Link href="/contact" passHref>
-          <Button color="inherit">Contact</Button>
-        </Link>
-      </Box>
-    </Toolbar>
-  </AppBar> */
-);
+          }}}
+          aria-label="Get strarted"
+        >
+          Get strarted
+        </StyledButton>
+      </Toolbar>
+    </AppBar>
+  );
+};
