@@ -13,7 +13,7 @@ const PricingCard = ({ plan }) => {
                 border: plan.popular ? 2 : 1,
                 borderColor: plan.popular ? theme.palette.secondary.main : theme.palette.secondary.light,
                 position: "relative",
-                height: 400,
+                height: "50vh",
                 display: "flex",
                 flexDirection: "column",
             }}
@@ -32,9 +32,9 @@ const PricingCard = ({ plan }) => {
                         fontWeight: "bold",
                         fontSize: "0.75rem", // opzionale: dimensione testo
                         "& .MuiChip-label": {
-                          px: 2, // padding orizzontale per etichetta
+                            px: 2, // padding orizzontale per etichetta
                         },
-                      }}
+                    }}
                 />
             )}
             <CardContent sx={{ flexGrow: 1, display: "flex", flexDirection: "column" }}>
@@ -49,7 +49,18 @@ const PricingCard = ({ plan }) => {
                 </Typography>
                 <Box mt={3} flexGrow={1}>
                     {plan.features.map((feature, index) => (
-                        <Typography key={index} variant="body2" color={theme.palette.text.secondary} gutterBottom textAlign="left">
+                        <Typography
+                            key={index}
+                            variant="body2" // Cambiato da "body3" a "body2" per coerenza, se necessario
+                            color={theme.palette.text.secondary}
+                            gutterBottom
+                            textAlign="left"
+                            sx={{
+                                wordWrap: "break-word", // Permette la rottura del testo
+                                whiteSpace: "normal", // Assicura che il testo vada a capo
+                                fontSize: "1rem", 
+                            }}
+                        >
                             ✓ {feature}
                         </Typography>
                     ))}

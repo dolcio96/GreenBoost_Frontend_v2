@@ -36,10 +36,10 @@ const Benefits = () => {
                 src="/LogoD4DChiaro.svg"
                 alt="Company Logo"
                 sx={{
-                  height: 60,
+                  height: 100,
                   width: "auto",
                   display: "inline-block",
-                  mx: -3,
+                  mx: -5,
                   verticalAlign: "middle",
                 }}
                 onError={(e) => {

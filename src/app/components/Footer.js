@@ -1,17 +1,32 @@
 'use client';
+import { useState } from "react";
 import { Box, Container, Grid, Typography, Link, Divider, IconButton, useTheme } from "@mui/material";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import GitHubIcon from "@mui/icons-material/GitHub";
+import { Link as ReactScrollLink } from "react-scroll";
+import { styled } from "@mui/material/styles";
+import ContactDialog from './ContactDialog';  // Importiamo il nuovo componente
 
 export const Footer = () => {
-  const theme = useTheme();
+  const theme = useTheme();  // Ottieni il tema
+  const [openContactDialog, setOpenContactDialog] = useState(false);
 
-  // Componente interno FooterLink (senza tipi)
-  const FooterLink = ({ href, children }) => (
+  // Funzione per aprire il dialog
+  const handleOpenContactDialog = (event) => {
+    event.preventDefault();  // Previene il comportamento di navigazione
+    setOpenContactDialog(true);
+  };
+
+  // Funzione per chiudere il dialog
+  const handleCloseContactDialog = () => {
+    setOpenContactDialog(false);
+  };
+
+  const FooterLink = ({ href, children, onClick }) => (
     <Link
       href={href}
-    
+      onClick={onClick}  // Aggiunta la gestione dell'evento onClick
       display="block"
       sx={{
         color: theme.palette.text.secondary,
@@ -23,24 +38,31 @@ export const Footer = () => {
     </Link>
   );
 
+  const FooterScrollLink = styled(ReactScrollLink)(({ theme }) => ({
+    color: theme.palette.text.secondary,
+    textDecoration: 'none',
+    cursor: 'pointer',
+    '&:hover': {
+      color: theme.palette.secondary.main,
+    },
+  }));
+
   return (
     <Box component="footer" sx={{ bgcolor: theme.palette.background.light, py: 6, color: theme.palette.text.primary }}>
       <Container maxWidth="lg">
         <Grid container spacing={4} mb={4}>
-          <Grid item xs={12} md={3}    alignContent={"center"}
-                    justifyContent={"center"} 
-                     display="flex" flexDirection="column" alignItems="center">
+          <Grid item xs={12} md={3} alignContent={"center"} justifyContent={"center"} display="flex" flexDirection="column" alignItems="center">
             <Box
-                    alignContent={"center"}
-                    justifyContent={"center"} 
-                     component="img"
-                     src="/LogoD4DChiaro.svg"
-                     alt="Company Logo"
-                     sx={{ height: 60, width: "auto" }}
-                     onError={(e) => {
-                       e.target.src = "https://images.unsplash.com/photo-1563986768609-322da13575f3";
-                     }}
-                   />
+              alignContent={"center"}
+              justifyContent={"center"}
+              component="img"
+              src="/LogoD4DChiaro.svg"
+              alt="Company Logo"
+              sx={{ height: 60, width: "auto" }}
+              onError={(e) => {
+                e.target.src = "https://images.unsplash.com/photo-1563986768609-322da13575f3";
+              }}
+            />
             <Typography variant="body2" sx={{ color: theme.palette.text.primary }}>
               Empowering sustainable transformation through AI and data analytics.
             </Typography>
@@ -50,19 +72,15 @@ export const Footer = () => {
             <Typography variant="subtitle1" fontWeight={600}>Product</Typography>
             <Box>
               <FooterLink href="#">Features</FooterLink>
-              <FooterLink href="#">Pricing</FooterLink>
-              <FooterLink href="#">Case Studies</FooterLink>
-              <FooterLink href="#">Documentation</FooterLink>
+              <FooterScrollLink to="pricing" smooth={true} duration={500} offset={-70}>Pricing</FooterScrollLink>
             </Box>
           </Grid>
 
           <Grid item xs={12} md={3}>
             <Typography variant="subtitle1" fontWeight={600}>Company</Typography>
             <Box>
-              <FooterLink href="#">About</FooterLink>
-              <FooterLink href="#">Blog</FooterLink>
-              <FooterLink href="#">Careers</FooterLink>
-              <FooterLink href="#">Contact</FooterLink>
+              <FooterLink href="https://www.greenboost.it/en">GreenBoost</FooterLink>
+              <FooterLink href="#" onClick={handleOpenContactDialog}>Contact</FooterLink> {/* Cliccando su Contact, apre il pop-up */}
             </Box>
           </Grid>
 
@@ -95,6 +113,9 @@ export const Footer = () => {
           </Box>
         </Box>
       </Container>
+
+      {/* Passiamo il tema come prop al componente ContactDialog */}
+      <ContactDialog open={openContactDialog} onClose={handleCloseContactDialog} theme={theme} />
     </Box>
   );
 };

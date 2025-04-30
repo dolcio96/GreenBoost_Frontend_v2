@@ -1,52 +1,45 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { Box, IconButton, useMediaQuery, useTheme } from "@mui/material";
-import { ArrowBackIos, ArrowForwardIos } from "@mui/icons-material";
-import { motion } from "framer-motion";
+import { Box, useMediaQuery } from "@mui/material";
 
 const logos = [
-  "https://public.readdy.ai/ai/img_res/12a7a086ef8cb6ad2cd3ee249037f09f.jpg",
-  "https://public.readdy.ai/ai/img_res/8c4a1b5b7940b216b1ef959f557fb9a2.jpg",
-  "https://public.readdy.ai/ai/img_res/74cb6ae09ba49e562dd0515f000dcbb0.jpg",
-  "https://public.readdy.ai/ai/img_res/1c8371d2e2ecbd84473fc36ae74a8415.jpg",
-  "https://public.readdy.ai/ai/img_res/5067e0d97e4f0345e5f62bcfe741bd38.jpg",
-  "https://public.readdy.ai/ai/img_res/6f96eed69ea4681231b2960bac479abd.jpg"
+  "/partner/logo_net0.png",
+  "/partner/logo_Puro.png",
+  "/partner/logo_Biocarbon_2.png",
+  "/partner/logo_CSMT.png",
+  "/partner/logo_Exomad_1.png",
+  "/partner/logo_Novocarbo.png",
+  "/partner/logo_GM_Ambiente.png",
+  "/partner/logo_Sorma.png",
 ];
 
 const PartnersSlider = () => {
-  const [index, setIndex] = useState(0);
-  const theme = useTheme();
   const isMedium = useMediaQuery("(max-width:960px)");
   const isSmall = useMediaQuery("(max-width:600px)");
-
   const itemsToShow = isSmall ? 2 : isMedium ? 4 : 5;
-  const totalSlides = logos.length - itemsToShow;
 
-  const moveSlider = (direction) => {
-    setIndex((prev) => {
-      if (direction === "next") return prev < totalSlides ? prev + 1 : 0;
-      return prev > 0 ? prev - 1 : totalSlides;
-    });
-  };
-
-  // 🔁 Autoplay effect
-  useEffect(() => {
-    const interval = setInterval(() => {
-      moveSlider("next");
-    }, 3000); // cambia slide ogni 3 secondi
-
-    return () => clearInterval(interval); // pulizia al dismount
-  }, [totalSlides]);
+  const duplicatedLogos = [...logos, ...logos]; // necessaria per loop continuo
 
   return (
-    <Box position="relative" overflow="hidden">
-      <motion.div
-        animate={{ x: `-${index * (100 / itemsToShow)}%` }}
-        transition={{ duration: 0.5, ease: "easeInOut" }}
-        style={{ display: "flex" }}
+    <Box
+      sx={{
+        overflow: "hidden",
+        position: "relative",
+        width: "100%",
+        "&:hover .slider-track": {
+          animationPlayState: "paused",
+        },
+      }}
+    >
+      <Box
+        className="slider-track"
+        sx={{
+          display: "flex",
+          width: "fit-content",
+          animation: "scroll-left 30s linear infinite",
+        }}
       >
-        {logos.map((logo, i) => (
+        {duplicatedLogos.map((logo, i) => (
           <Box
             key={i}
             flexShrink={0}
@@ -69,40 +62,18 @@ const PartnersSlider = () => {
             />
           </Box>
         ))}
-      </motion.div>
+      </Box>
 
-      <IconButton
-        onClick={() => moveSlider("prev")}
-        sx={{
-          position: "absolute",
-          left: 0,
-          top: "50%",
-          transform: "translateY(-50%)",
-          color: theme.palette.primary.main,
-          backgroundColor: theme.palette.primary.light,
-          '&:hover': {
-            backgroundColor: theme.palette.secondary.main,
-          },
-        }}
-      >
-        <ArrowBackIos />
-      </IconButton>
-      <IconButton
-        onClick={() => moveSlider("next")}
-        sx={{
-          position: "absolute",
-          right: 0,
-          top: "50%",
-          transform: "translateY(-50%)",
-          color: theme.palette.primary.main,
-          backgroundColor: theme.palette.primary.light,
-          '&:hover': {
-            backgroundColor: theme.palette.secondary.main,
-          },
-        }}
-      >
-        <ArrowForwardIos />
-      </IconButton>
+      <style jsx global>{`
+        @keyframes scroll-left {
+          0% {
+            transform: translateX(0);
+          }
+          100% {
+            transform: translateX(-50%);
+          }
+        }
+      `}</style>
     </Box>
   );
 };

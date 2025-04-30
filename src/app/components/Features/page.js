@@ -17,7 +17,7 @@ const Features = () => {
             <Grid item xs={12} md={6}>
               <TextBox />
             </Grid>
-            <Grid item xs={12} md={6}>
+            <Grid item xs={12} md={6} sx={{ height: { xs: "auto", md: "500px" } }}>
               <VideoBox />
             </Grid>
           </Grid>
