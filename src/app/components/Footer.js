@@ -101,15 +101,15 @@ export const Footer = () => {
             © 2025 D4D. All rights reserved.
           </Typography>
           <Box>
-            <IconButton href="#" sx={{ color: theme.palette.text.primary, '&:hover': { color: theme.palette.secondary.main } }}>
+            <IconButton href="https://www.linkedin.com/company/greenboost/" sx={{ color: theme.palette.text.primary, '&:hover': { color: theme.palette.secondary.main } }}>
               <LinkedInIcon />
             </IconButton>
-            <IconButton href="#" sx={{ color: theme.palette.text.primary, '&:hover': { color: theme.palette.secondary.main } }}>
+            {/*<IconButton href="#" sx={{ color: theme.palette.text.primary, '&:hover': { color: theme.palette.secondary.main } }}>
               <TwitterIcon />
             </IconButton>
             <IconButton href="#" sx={{ color: theme.palette.text.primary, '&:hover': { color: theme.palette.secondary.main } }}>
               <GitHubIcon />
-            </IconButton>
+            </IconButton>*/}
           </Box>
         </Box>
       </Container>

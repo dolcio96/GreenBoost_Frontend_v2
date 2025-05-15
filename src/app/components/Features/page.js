@@ -14,11 +14,11 @@ const Features = () => {
       <Box sx={{ py: 8, backgroundColor: theme.palette.background.light }}>
         <Box sx={{ maxWidth: "1200px", mx: "auto", px: 3 }}>
           <Grid container spacing={4} alignItems="center">
-            <Grid item xs={12} md={6}>
-              <TextBox />
-            </Grid>
             <Grid item xs={12} md={6} sx={{ height: { xs: "auto", md: "500px" } }}>
               <VideoBox />
+            </Grid>
+            <Grid item xs={12} md={6} >
+              <TextBox />
             </Grid>
           </Grid>
         </Box>

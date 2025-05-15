@@ -30,11 +30,9 @@ const ContactDialog = ({ open, onClose, theme }) => {
       <DialogTitle>Contact Information</DialogTitle> {/* Imposta il titolo del dialogo */}
       <DialogContent> {/* Imposta il contenuto del dialogo */}
         <Typography variant="body1">
-          Email: <a href="mailto:contact@d4d.com" style={{ color: theme.palette.text.primary }}>contact@d4d.com</a>
+          Email: <a href="info@greenboost.it" style={{ color: theme.palette.text.primary }}>info@greenboost.it</a>
         </Typography>
-        <Typography variant="body1">
-          Phone: +1 234 567 890
-        </Typography>
+      
       </DialogContent>
       <DialogActions>
         <Button onClick={onClose} sx={{ color: theme.palette.secondary.main }}>

@@ -1,9 +1,5 @@
-
-
-
-
-
 "use client";
+
 import React, { useState, useEffect } from "react";
 import {
   Box,
@@ -14,6 +10,7 @@ import {
 import { RxDashboard } from "react-icons/rx";
 import StyledButton from "@/components/buttons/StyledButton";
 import Link from "next/link";
+import { Link as ScrollLink } from "react-scroll";
 
 const EventHero = () => {
   const theme = useTheme();
@@ -83,12 +80,12 @@ const EventHero = () => {
               color="primary"
               size="large"
               startIcon={<RxDashboard />}
-              aria-label="Buy Now"
+              aria-label=" Get Started"
               component={Link}
-              href="/dashboard"
+              href="/Registration"
               sx={{ mr: 2 }}
             >
-              Buy Now
+              Get Started
             </StyledButton>
 
             <StyledButton
@@ -97,10 +94,11 @@ const EventHero = () => {
               size="large"
               startIcon={<RxDashboard />}
               aria-label="Watch Demo"
-              component={Link}
-              href="/dashboard"
             >
-              Watch Demo
+              <ScrollLink to={"features"} smooth={true} duration={500} offset={-70} >
+                Watch Demo
+              </ScrollLink>
+
             </StyledButton>
           </Box>
         </Box>
@@ -110,78 +108,3 @@ const EventHero = () => {
 };
 
 export default EventHero;
-
-
-/*  <Box
-       sx={{
-         
-         minHeight: "100vh",
-         color: theme.palette.text.primary,
-         display: 'flex',
-         alignItems: 'center',       // Centro verticale
-         justifyContent: 'flex-start' // Allineamento a sinistra
-       }}
-     >
-     <Container maxWidth="lg" sx={{ mt: 0, mb: 0, px: 4 }}>
- 
-         <Box
-           sx={{
-             display: "flex",
-             flexDirection: isMobile ? "column" : "row",
-             alignItems: "center",
-             gap: 6
-           }}
-         >
-           <Box sx={{ flex: 1 }}>
-             <Typography
-               variant="h1"
-               sx={{
-                 mb: 3,
-                 fontWeight: "bold",
-                 color: theme.palette.text.primary
-               }}
-             >
-               Turn ESG Data into Powerful Sustainability Strategies
-               <br />
-             </Typography>
- 
-             <Typography
-               variant="h5"
-               sx={{
-                 mb: 4,
-                 opacity: 0.8,
-                 fontWeight: "bold",
-                 color: theme.palette.text.tertiary
-               }}
-             >
-               Leverage AI-powered insights to enhance your sustainability strategy. Analyze ESG performance, benchmark against industry standards, and identify optimal parameters aligned to your goals.
-             </Typography>
- 
-             <StyledButton
-               variant="contained"
-               color="primary"
-               size="large"
-               startIcon={<RxDashboard />}
-               aria-label="Buy Now"
-               component={Link}
-               href="/dashboard"
-               sx={{ mr: 2 }}
-             >
-               Buy Now
-             </StyledButton>
- 
-             <StyledButton
-               variant="contained"
-               color="secondary"
-               size="large"
-               startIcon={<RxDashboard />}
-               aria-label="Watch Demo"
-               component={Link}
-               href="/dashboard"
-             >
-               Watch Demo
-             </StyledButton>
-           </Box>
-         </Box>
-       </Container>
-     </Box>*/

@@ -18,7 +18,6 @@ import BenefitCard from "./BenefitCard"; // Assicurati che il path sia corretto
 
 const Benefits = () => {
   const theme = useTheme();
-
   return (
     <Element name="benefits" id="benefits" style={{ scrollMarginTop: "80px" }}>
       <Box id="benefits" py={10} sx={{ backgroundColor: theme.palette.background.dark }}>

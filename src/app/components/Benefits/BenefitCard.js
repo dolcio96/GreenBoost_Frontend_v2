@@ -3,8 +3,13 @@ import React from "react";
 import { Box, Typography, Paper, useTheme } from "@mui/material";
 import { styled } from "@mui/system";
 
+
+
+const BenefitCard = ({ icon, title, description }) => {
+  const theme = useTheme();
+
 // Wrapper per l'icona con animazione e centratura
-const IconWrapper = styled(Box)(({ theme }) => ({
+const IconWrapper = styled(Box)(() => ({
   width: 64,
   height: 64,
   borderRadius: 12,
@@ -19,8 +24,6 @@ const IconWrapper = styled(Box)(({ theme }) => ({
   },
 }));
 
-const BenefitCard = ({ icon, title, description }) => {
-  const theme = useTheme();
 
   return (
     <Paper
