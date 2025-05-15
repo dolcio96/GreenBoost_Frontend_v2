@@ -32,6 +32,7 @@ export const Header = () => {
         </Box>
         <StyledButton
           variant="contained"
+           href="/Registration"
           sx={{ backgroundColor: theme.palette.secondary.main, color: theme.palette.text.tertiary , '&:hover': {
             color: theme.palette.secondary.main,
             backgroundColor: theme.palette.background.light,

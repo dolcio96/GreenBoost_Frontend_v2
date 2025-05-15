@@ -67,7 +67,8 @@ const PricingCard = ({ plan }) => {
                 </Box>
             </CardContent>
             <Box sx={{ p: 1, display: "flex", justifyContent: "center" }}>
-                <Button fullWidth variant={plan.buttonVariant} sx={{
+                <Button fullWidth variant={plan.buttonVariant}  href="/Registration"
+                sx={{
                     borderRadius: "10px",
                     fontSize: "1rem",
                     fontWeight: "bold",
