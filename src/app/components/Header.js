@@ -38,9 +38,9 @@ export const Header = () => {
             fontWeight:"bold",
 
           }}}
-          aria-label="Get strarted"
+          aria-label="Get started"
         >
-          Get strarted
+          Get started
         </StyledButton>
       </Toolbar>
     </AppBar>
