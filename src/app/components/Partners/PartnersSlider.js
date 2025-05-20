@@ -5,8 +5,8 @@ import { Box, useMediaQuery } from "@mui/material";
 const logos = [
   "/partner/logo_net0.png",
   "/partner/logo_Puro.png",
-  "/partner/logo_Biocarbon_2.png",
   "/partner/logo_CSMT.png",
+  "/partner/logo_Biocarbon_2.png",
   "/partner/logo_Exomad_1.png",
   "/partner/logo_Novocarbo.png",
   "/partner/logo_GM_Ambiente.png",

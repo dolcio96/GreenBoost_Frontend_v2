@@ -87,9 +87,9 @@ export const Footer = () => {
           <Grid item xs={12} md={3}>
             <Typography variant="subtitle1" fontWeight={600}>Legal</Typography>
             <Box>
-              <FooterLink href="#">Privacy Policy</FooterLink>
+              <FooterLink href="https://www.iubenda.com/privacy-policy/91965943">Privacy Policy</FooterLink>
+              <FooterLink href="https://www.iubenda.com/privacy-policy/91965943/cookie-policy">Cookie Policy</FooterLink>
               <FooterLink href="#">Terms of Service</FooterLink>
-              <FooterLink href="#">Cookie Policy</FooterLink>
             </Box>
           </Grid>
         </Grid>

@@ -12,25 +12,58 @@ const HeroVideo = () => {
     const ctx = canvas.getContext("2d");
 
     const setCanvasSize = () => {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
+      const dpr = window.devicePixelRatio || 1;
+
+      // Su iOS Safari visualViewport restituisce il viewport visibile reale
+      const width = window.visualViewport ? window.visualViewport.width : window.innerWidth;
+      const height = window.visualViewport ? window.visualViewport.height : window.innerHeight;
+
+      // Setto dimensioni in pixel per canvas tenendo conto del devicePixelRatio (retina etc)
+      canvas.width = width * dpr;
+      canvas.height = height * dpr;
+
+      // Setto dimensioni CSS per adattarsi al viewport
+      canvas.style.width = `${width}px`;
+      canvas.style.height = `${height}px`;
+
+      // Scala il contesto per supportare il devicePixelRatio e mantenere nitidezza
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
     };
 
     setCanvasSize();
-    window.addEventListener("resize", setCanvasSize);
+
+    // Debounce semplice per resize, evita troppi setCanvasSize in rapida successione
+    let resizeTimeout;
+    const onResize = () => {
+      clearTimeout(resizeTimeout);
+      resizeTimeout = setTimeout(() => {
+        setCanvasSize();
+      }, 100);
+    };
+
+    window.addEventListener("resize", onResize);
+    // Anche visualViewport può cambiare dimensione, utile per mobile quando cambia l'area visibile
+    if (window.visualViewport) {
+      window.visualViewport.addEventListener("resize", onResize);
+    }
 
     // Creazione e configurazione del video
     const video = document.createElement("video");
-    video.src = "/ocean.mp4"; // Video per l'hero
+    video.src = "/ocean_lite.mp4";
     video.loop = true;
     video.muted = true;
     video.autoplay = true;
-    video.play().catch(console.error); // Gestione errori autoplay
+    video.playsInline = true; // importantissimo per autoplay su iOS mobile
     videoRef.current = video;
+
+    video.play().catch(console.error);
 
     const updateFrame = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      // Disegno video scalato alla dimensione del canvas con dpr considerato
       ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+
       animationFrameRef.current = requestAnimationFrame(updateFrame);
     };
 
@@ -39,7 +72,10 @@ const HeroVideo = () => {
     };
 
     return () => {
-      window.removeEventListener("resize", setCanvasSize);
+      window.removeEventListener("resize", onResize);
+      if (window.visualViewport) {
+        window.visualViewport.removeEventListener("resize", onResize);
+      }
       cancelAnimationFrame(animationFrameRef.current);
       video.pause();
       video.src = "";
@@ -52,10 +88,9 @@ const HeroVideo = () => {
       sx={{
         position: "relative",
         width: "100%",
-        height: "0vh",
+        height: "0vh", // qui potresti rivedere se serve o meno
       }}
     >
-      {/* Video Hero */}
       <canvas
         ref={canvasRef}
         style={{
@@ -65,6 +100,7 @@ const HeroVideo = () => {
           width: "100%",
           height: "100%",
           zIndex: -1,
+          objectFit: "cover", // aiuta a mantenere aspect ratio corretto
         }}
       />
     </Box>
