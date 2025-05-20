@@ -28,6 +28,7 @@ export const Footer = () => {
       href={href}
       onClick={onClick}  // Aggiunta la gestione dell'evento onClick
       display="block"
+      target="_blank"
       sx={{
         color: theme.palette.text.secondary,
         textDecoration: 'none',

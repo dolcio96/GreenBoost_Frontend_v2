@@ -8,7 +8,8 @@ import PricingCard from "./PricingCard"; // assicurati che il path sia corretto
 const plans = [
   {
     name: "Free",
-    price: "€0",
+    icon:"🔓",
+    price: "Start your journey",//"€0",
     duration: "/year",
     features: [
       "Upload sustainability reports",
@@ -22,7 +23,8 @@ const plans = [
   },
   {
     name: "Base",
-    price: "€3,000",
+    icon:"🛠",
+    price: "Benchmark & Improve",//"€3,000",
     duration: "/year",
     features: [
       "All Free features",
@@ -37,7 +39,8 @@ const plans = [
   },
   {
     name: "Premium",
-    price: "€5,000",
+    icon:"🚀",
+    price: "Plan & Forecast",//"€5,000",
     duration: "/year",
     features: [
       "All Base features",
@@ -53,7 +56,8 @@ const plans = [
   },
   {
     name: "Enterprise",
-    price: "Custom",
+    icon:"🧠",
+    price: "Tailored for Leaders",//"Custom",
     duration: "pricing",
     features: [
       "All Premium features",

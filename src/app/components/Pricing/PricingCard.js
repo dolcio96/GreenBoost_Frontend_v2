@@ -42,11 +42,14 @@ const PricingCard = ({ plan }) => {
                     {plan.name}
                 </Typography>
                 <Typography variant="h4" fontWeight="bold" mt={2} color={theme.palette.text.primary}>
+                    {plan.icon}
+                </Typography>
+                <Typography variant="h5" fontWeight="bold" mt={2} color={theme.palette.text.primary}>
                     {plan.price}
                 </Typography>
-                <Typography variant="body2" color={theme.palette.text.secondary}>
+               {/*<Typography variant="body2" color={theme.palette.text.secondary}>
                     {plan.duration}
-                </Typography>
+                </Typography>*/ }
                 <Box mt={3} flexGrow={1}>
                     {plan.features.map((feature, index) => (
                         <Typography
@@ -58,7 +61,7 @@ const PricingCard = ({ plan }) => {
                             sx={{
                                 wordWrap: "break-word", // Permette la rottura del testo
                                 whiteSpace: "normal", // Assicura che il testo vada a capo
-                                fontSize: "1rem", 
+                                fontSize: "1rem",
                             }}
                         >
                             ✓ {feature}
@@ -67,19 +70,19 @@ const PricingCard = ({ plan }) => {
                 </Box>
             </CardContent>
             <Box sx={{ p: 1, display: "flex", justifyContent: "center" }}>
-                <Button fullWidth variant={plan.buttonVariant}  href="/Registration"
-                sx={{
-                    borderRadius: "10px",
-                    fontSize: "1rem",
-                    fontWeight: "bold",
-                    bgcolor: plan.buttonVariant === "contained" ? theme.palette.secondary.main : "transparent",
-                    color: plan.buttonVariant === "contained" ? theme.palette.text.tertiary : theme.palette.secondary.main,
-                    borderColor: plan.buttonVariant === "outlined" ? theme.palette.secondary.main : "none",
-                    "&:hover": {
-                        bgcolor: plan.buttonVariant === "contained" ? theme.palette.primary.dark : theme.palette.secondary.main,
-                        color: theme.palette.text.primary,
-                    },
-                }}
+                <Button fullWidth variant={plan.buttonVariant} href="/Registration"
+                    sx={{
+                        borderRadius: "10px",
+                        fontSize: "1rem",
+                        fontWeight: "bold",
+                        bgcolor: plan.buttonVariant === "contained" ? theme.palette.secondary.main : "transparent",
+                        color: plan.buttonVariant === "contained" ? theme.palette.text.tertiary : theme.palette.secondary.main,
+                        borderColor: plan.buttonVariant === "outlined" ? theme.palette.secondary.main : "none",
+                        "&:hover": {
+                            bgcolor: plan.buttonVariant === "contained" ? theme.palette.primary.dark : theme.palette.secondary.main,
+                            color: theme.palette.text.primary,
+                        },
+                    }}
                 >
                     {plan.buttonText}
                 </Button>
