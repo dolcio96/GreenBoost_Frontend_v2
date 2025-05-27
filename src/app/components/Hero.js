@@ -65,8 +65,8 @@ const EventHero = () => {
               variant="h6"
               sx={{
                 mb: 4,
-                opacity: 0.8,
-                fontWeight: "bold",
+                opacity: 1,
+                fontWeight: 900,
                 color: theme.palette.text.tertiary,
               }}
             >

@@ -49,7 +49,7 @@ const Benefits = () => {
               ?
             </Typography>
             <Typography variant="h4" sx={{ color: theme.palette.text.secondary }}>
-              Transform your sustainability journey with GreenBoost cutting-edge platform to take data-driven decisions
+              Transform your sustainability journey with Data-4-Decarbonization, a cutting-edge platform to take data-driven decisions
             </Typography>
           </Box>
 

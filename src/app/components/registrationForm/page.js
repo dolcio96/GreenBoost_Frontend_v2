@@ -21,7 +21,6 @@ import {
     Paper,
 } from "@mui/material";
 import { styled, useTheme } from "@mui/material/styles";
-import UploadFileIcon from "@mui/icons-material/UploadFile";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import { useState } from "react";
 
@@ -78,10 +77,20 @@ const StyledSelect = styled(Select)(({ theme }) => ({
     "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
         borderColor: theme.palette.secondary.main,
     },
+    // Change the color of the dropdown arrow (icon)
+    '& .MuiSelect-icon': {
+        color: theme.palette.text.primary,
+    },
 }));
 
 const StyledInputLabel = styled(InputLabel)(({ theme }) => ({
     color: theme.palette.text.secondary,
+    '&.Mui-focused': {
+        color: theme.palette.text.secondary,
+    },
+    '&.MuiInputLabel-shrink': {
+        color: theme.palette.text.secondary,
+    },
 }));
 
 // Custom MenuProps per background del menu a tendina
@@ -106,12 +115,12 @@ export default function RegistrationForm() {
         companySize: "",
         turnover: "",
         terms: false,
-        file: null,
+        // file: null, // in formData state
     });
 
     const [errors, setErrors] = useState({});
     const [submitted, setSubmitted] = useState(false);
-    const [fileName, setFileName] = useState("");
+    // const [fileName, setFileName] = useState("");
     const [snackbarOpen, setSnackbarOpen] = useState(false);
 
     const handleChange = (e) => {
@@ -120,9 +129,10 @@ export default function RegistrationForm() {
             ...prev,
             [name]: type === "checkbox" ? checked : type === "file" ? files[0] : value,
         }));
+        /*
         if (type === "file" && files.length) {
             setFileName(files[0].name);
-        }
+        }*/
     };
 
     const validate = () => {
@@ -138,17 +148,59 @@ export default function RegistrationForm() {
         return newErrors;
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         const validationErrors = validate();
         setErrors(validationErrors);
         if (Object.keys(validationErrors).length === 0) {
-            setSubmitted(true);
-            setSnackbarOpen(true);
+            // Prepare form data for backend
+            const data = new FormData();
+            data.append("fullName", formData.fullName);
+            data.append("email", formData.email);
+            data.append("companyName", formData.companyName);
+            data.append("industry", formData.industry);
+            data.append("country", formData.country);
+            data.append("companySize", formData.companySize);
+            data.append("turnover", formData.turnover);
+            data.append("terms", formData.terms);
+
+
+            const jsonObject = {};
+            for (const [key, value] of data.entries()) {
+                jsonObject[key] = value;
+            }
+
+            const jsonString = JSON.stringify(jsonObject);
+
+            console.log("JSON String to be sent:", jsonString);
+            /* 
+               if (formData.file) {
+                   data.append("pdfName", formData.file.name); // Only send the file name, not the file itself
+               }*/
+            try {
+                console.log(data);
+                const response = await fetch("http://13.37.211.151:443/api/company_form", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: jsonString,
+                });
+                if (response.ok) {
+                    setSubmitted(true);
+                    setSnackbarOpen(true);
+                } else {
+                    // Handle error from backend
+                    setSnackbarOpen(true);
+                }
+            } catch (error) {
+                // Handle network error
+                setSnackbarOpen(true);
+            }
         }
     };
 
-    return (
+    return (<>
         <Box maxWidth="md" mx="auto" sx={{ color: theme.palette.text.primary }}>
             <Typography variant="h4" fontWeight="bold" color="secondary.main" gutterBottom>
                 Be the First to Know
@@ -269,7 +321,7 @@ export default function RegistrationForm() {
                     </StyledSelect>
                 </FormControl>
 
-                <Box mt={2}>
+                {/* <Box mt={2}>
                     <Button component="label" variant="outlined" startIcon={<UploadFileIcon />} color="secondary">
                         Upload Sustainability Report (PDF)
                         <input type="file" hidden accept=".pdf" name="file" onChange={handleChange} />
@@ -279,7 +331,7 @@ export default function RegistrationForm() {
                             File: {fileName}
                         </Typography>
                     )}
-                </Box>
+                </Box> */}
 
                 <FormControlLabel
                     control={
@@ -327,6 +379,10 @@ export default function RegistrationForm() {
                     Submission received!
                 </Alert>
             </Snackbar>
+
+
         </Box>
+        {/*<iframe title="GREENBOOST" width="1140" height="541.25" src="https://app.powerbi.com/reportEmbed?reportId=23243e41-f873-44c8-bb02-f8401a4e05a1&appId=0eeaeba7-8a9f-4d6f-970e-aeccb21c3762&autoAuth=true&ctid=0b72a633-b4d5-4deb-bea8-d1d1c0dbed4d" frameborder="0" allowFullScreen="true"></iframe>*/}
+    </>
     );
 }
