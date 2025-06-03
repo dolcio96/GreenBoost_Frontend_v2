@@ -61,8 +61,26 @@ const HeroVideo = () => {
     const updateFrame = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-      // Disegno video scalato alla dimensione del canvas con dpr considerato
-      ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+      // Mantieni aspect ratio del video e copri il canvas (object-fit: cover)
+      const videoAspect = video.videoWidth / video.videoHeight;
+      const canvasAspect = canvas.width / canvas.height;
+      let drawWidth, drawHeight, offsetX, offsetY;
+
+      if (canvasAspect > videoAspect) {
+        // Canvas più largo rispetto al video
+        drawWidth = canvas.width;
+        drawHeight = canvas.width / videoAspect;
+        offsetX = 0;
+        offsetY = (canvas.height - drawHeight) / 2;
+      } else {
+        // Canvas più alto rispetto al video
+        drawHeight = canvas.height;
+        drawWidth = canvas.height * videoAspect;
+        offsetX = (canvas.width - drawWidth) / 2;
+        offsetY = 0;
+      }
+
+      ctx.drawImage(video, offsetX, offsetY, drawWidth, drawHeight);
 
       animationFrameRef.current = requestAnimationFrame(updateFrame);
     };
