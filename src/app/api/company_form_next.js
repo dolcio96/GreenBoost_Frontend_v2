@@ -3,6 +3,7 @@
 export default async function handler(req, res) {
   if (req.method === 'POST') {
     try {
+      console.log('Received request:', req.body);
       const backendRes = await fetch('http://13.37.211.151:443/api/company_form', {
         method: 'POST',
         headers: {
