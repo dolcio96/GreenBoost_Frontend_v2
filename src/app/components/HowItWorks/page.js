@@ -48,10 +48,10 @@ const HowItWorks = () => {
               mb={2}
               color={theme.palette.text.primary}
             >
-              How It Works
+              How D4D Works
             </Typography>
             <Typography variant="h4"     color={theme.palette.text.secondary}>
-              Get started in minutes with our simple process
+             Deep dive in our simple process
             </Typography>
           </Box>
           <Grid container spacing={4} justifyContent="center">

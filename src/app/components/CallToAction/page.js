@@ -8,10 +8,10 @@ const CallToAction = () => {
     <Box component="section" sx={{ py: 10,color: theme.palette.text.primary, backgroundColor: theme.palette.background.dark, textAlign: "center" }}>
       <Container maxWidth="md">
         <Typography variant="h4" fontWeight="bold" gutterBottom>
-          Ready to Transform Your Sustainability Strategy?
+           Ready to Accelerate Your Decarbonization Strategy?
         </Typography>
         <Typography variant="h5" color={ theme.palette.text.secondary} mb={4}>
-          Join leading companies already using D4D to drive their sustainability initiatives
+          Join forward-thinking companies exploring D4D to unlock the full potential of their ESG data
         </Typography>
        
              <Button fullWidth 
@@ -29,7 +29,7 @@ const CallToAction = () => {
                             },
                         }}
                         >
-          Start Your Free Trial
+          Request a Demo
         </Button>
       </Container>
     </Box>

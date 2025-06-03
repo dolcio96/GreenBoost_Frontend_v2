@@ -7,7 +7,7 @@ import {
   useMediaQuery,
   useTheme,
 } from "@mui/material";
-import { RxDashboard } from "react-icons/rx";
+import { MdEvent, MdPlayCircleFilled } from "react-icons/md";
 import StyledButton from "@/components/buttons/StyledButton";
 import Link from "next/link";
 import { Link as ScrollLink } from "react-scroll";
@@ -62,7 +62,7 @@ const EventHero = () => {
             </Typography>
 
             <Typography
-              variant="h6"
+              variant="h5"
               sx={{
                 mb: 4,
                 opacity: 1,
@@ -79,24 +79,24 @@ const EventHero = () => {
               variant="contained"
               color="primary"
               size="large"
-              startIcon={<RxDashboard />}
+              startIcon={<MdEvent />}
               aria-label=" Get Started"
               component={Link}
               href="/Registration"
-              sx={{ mr: 2 }}
+              sx={{ mr: 2, mb: isMobile ? 2 : 0 }}
             >
-              Get Started
+              Book a Demo
             </StyledButton>
 
             <StyledButton
               variant="contained"
               color="secondary"
               size="large"
-              startIcon={<RxDashboard />}
+              startIcon={<MdPlayCircleFilled />}
               aria-label="Watch Demo"
             >
               <ScrollLink to={"features"} smooth={true} duration={500} offset={-70} >
-                Watch Demo
+                Watch Video
               </ScrollLink>
 
             </StyledButton>

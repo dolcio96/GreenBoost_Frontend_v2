@@ -178,8 +178,8 @@ export default function RegistrationForm() {
                    data.append("pdfName", formData.file.name); // Only send the file name, not the file itself
                }*/
             try {
-                console.log(data);
-                const response = await fetch("http://13.37.211.151:443/api/company_form", {
+                // Use the Next.js API route as a proxy to avoid CORS issues
+                const response = await fetch("/api/company_form", {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json",
@@ -190,11 +190,9 @@ export default function RegistrationForm() {
                     setSubmitted(true);
                     setSnackbarOpen(true);
                 } else {
-                    // Handle error from backend
                     setSnackbarOpen(true);
                 }
             } catch (error) {
-                // Handle network error
                 setSnackbarOpen(true);
             }
         }
@@ -353,7 +351,7 @@ export default function RegistrationForm() {
 
                 <Box mt={3}>
                     <Button type="submit" variant="contained" color="secondary" fullWidth>
-                        Leave Your Contact
+                        Book my Demo
                     </Button>
                 </Box>
             </StyledBox>

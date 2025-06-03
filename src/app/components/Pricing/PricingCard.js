@@ -13,9 +13,10 @@ const PricingCard = ({ plan }) => {
                 border: plan.popular ? 2 : 1,
                 borderColor: plan.popular ? theme.palette.secondary.main : theme.palette.secondary.light,
                 position: "relative",
-                height: "50vh",
                 display: "flex",
                 flexDirection: "column",
+                minHeight: { xs: 420, sm: 480, md: 520 }, // Only minHeight, no height
+                boxSizing: "border-box",
             }}
         >
             {plan.popular && (
