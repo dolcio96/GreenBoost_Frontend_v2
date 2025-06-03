@@ -179,7 +179,7 @@ export default function RegistrationForm() {
                }*/
             try {
                 // Use the Next.js API route as a proxy to avoid CORS issues
-                const response = await fetch("/api/company_form", {
+                const response = await fetch("/api/company_form_next", {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json",
