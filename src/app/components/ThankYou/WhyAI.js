@@ -9,32 +9,24 @@ const WhyAISection = () => {
       <Typography variant="h5" sx={{ fontWeight: "bold", mb: 3, textAlign: "center" }}>
         Why ESG Data Needs AI
       </Typography>
-      <Box sx={{ textAlign: "center", mb: 3 }}>
-        <Button variant="contained" sx={{ backgroundColor: "#4CAF50", padding: "10px 20px" }}>
-          <i className="ri-play-fill" style={{ fontSize: "24px", color: theme.palette.text.primary }}></i>
-        </Button>
-      </Box>
+   
       <Grid container spacing={3} alignItems="stretch">
         <Grid item xs={12} md={4}>
           <Paper sx={{ padding: 3, backgroundColor: theme.palette.background.dark, height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-            <Typography variant="h6" sx={{ color: "#10B981", mb: 2 }}>87%</Typography>
-            <Typography sx={{ color: theme.palette.text.secondary }}>of sustainability reports lack comparability</Typography>
+            <Typography variant="h6" sx={{ color: theme.palette.success.main, mb: 2 }}>-60% emissions per m²</Typography>
+            <Typography sx={{ color: theme.palette.text.secondary }}>AI fine-tunes energy use and cooling in real time, turning data centers into engines of sustainability</Typography>
           </Paper>
         </Grid>
         <Grid item xs={12} md={4}>
-          <Paper sx={{ padding: 3, backgroundColor: theme.palette.background.dark, height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-            <Typography variant="h6" sx={{ color: "#F87171", mb: 2 }}>
-              <i className="ri-time-line" style={{ color: "#F87171", fontSize: "24px" }}></i>
-            </Typography>
-            <Typography sx={{ color: theme.palette.text.secondary }}>Manual data extraction is time-consuming and error-prone</Typography>
+         <Paper sx={{ padding: 3, backgroundColor: theme.palette.background.dark, height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+            <Typography variant="h6" sx={{ color: theme.palette.success.main, mb: 2 }}>Up to 90% faster ESG reporting</Typography>
+            <Typography sx={{ color: theme.palette.text.secondary }}>AI cleans and structures data, automates disclosures, and slashes the risk of greenwashing</Typography>
           </Paper>
         </Grid>
         <Grid item xs={12} md={4}>
-          <Paper sx={{ padding: 3, backgroundColor: theme.palette.background.dark, height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-            <Typography variant="h6" sx={{ color: "#34D399", mb: 2 }}>
-              <i className="ri-rocket-line" style={{ color: "#34D399", fontSize: "24px" }}></i>
-            </Typography>
-            <Typography sx={{ color: theme.palette.text.secondary }}>D4D automates extraction, benchmarking, and action planning</Typography>
+         <Paper sx={{ padding: 3, backgroundColor: theme.palette.background.dark, height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+            <Typography variant="h6" sx={{ color: theme.palette.success.main, mb: 2 }}>100% supply chain visibility</Typography>
+            <Typography sx={{ color: theme.palette.text.secondary }}>Satellite-powered AI uncovers hidden environmental risks and turns blind spots into action plans</Typography>
           </Paper>
         </Grid>
       </Grid>

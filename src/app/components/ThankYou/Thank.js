@@ -8,7 +8,7 @@ const ThankYouMainSection = () => {
   return (
     <Paper sx={{ backgroundColor: theme.palette.background.light, padding: 4, boxShadow: 3, marginBottom: 4 }}>
       <Box sx={{ textAlign: "center" }}>
-        <Box sx={{ display: "inline-block", backgroundColor: "#34D399", borderRadius: "50%", p: 2, mb: 2 }}>
+        <Box sx={{ display: "inline-block", backgroundColor: theme.palette.success.main, borderRadius: "50%", p: 2, mb: 2 }}>
           <CheckCircleOutline sx={{ color: theme.palette.text.primary, fontSize: 40 }} />
         </Box>
         <Typography variant="h4" sx={{ fontWeight: "bold", mb: 2 }}>
