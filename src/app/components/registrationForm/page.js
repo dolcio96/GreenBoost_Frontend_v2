@@ -190,11 +190,11 @@ export default function RegistrationForm() {
                 if (response.ok) {
                      router.push("/ThankYouPage"); // reindirizza qui
                 } else {
-                     router.push("/ThankYouPage"); // reindirizza qui
+                    
                     setSnackbarOpen(false);
                 }
             } catch (error) {
-                 router.push("/ThankYouPage"); // reindirizza qui
+              
                 setSnackbarOpen(false);
             }
         }
