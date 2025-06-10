@@ -23,6 +23,7 @@ import {
 import { styled, useTheme } from "@mui/material/styles";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 const countryList = ["Italy", "France", "Germany", "Spain", "United Kingdom", "United States"];
 const industryList = [
@@ -105,7 +106,7 @@ const getMenuProps = (theme) => ({
 
 export default function RegistrationForm() {
     const theme = useTheme();
-
+    const router = useRouter(); // aggiungi questa riga
     const [formData, setFormData] = useState({
         fullName: "",
         email: "",
@@ -187,13 +188,14 @@ export default function RegistrationForm() {
                     body: jsonString,
                 });
                 if (response.ok) {
-                    setSubmitted(true);
-                    setSnackbarOpen(true);
+                     router.push("/ThankYouPage"); // reindirizza qui
                 } else {
-                    setSnackbarOpen(true);
+                     router.push("/ThankYouPage"); // reindirizza qui
+                    setSnackbarOpen(false);
                 }
             } catch (error) {
-                setSnackbarOpen(true);
+                 router.push("/ThankYouPage"); // reindirizza qui
+                setSnackbarOpen(false);
             }
         }
     };
