@@ -1,6 +1,7 @@
 'use client';
 
 import { Box, Container, Typography, Button,useTheme } from "@mui/material";
+import Link from "next/link";
 
 const CallToAction = () => {
         const theme = useTheme();
@@ -28,6 +29,8 @@ const CallToAction = () => {
                                 color: theme.palette.text.primary,
                             },
                         }}
+                        component={Link}
+                        href="/Registration"
                         >
           Request a Demo
         </Button>

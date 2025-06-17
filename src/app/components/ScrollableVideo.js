@@ -56,7 +56,19 @@ const HeroVideo = () => {
     video.playsInline = true; // importantissimo per autoplay su iOS mobile
     videoRef.current = video;
 
-    video.play().catch(console.error);
+    // Helper to safely play/pause
+    const safePlay = () => {
+      if (video.paused) {
+        video.play().catch(() => {});
+      }
+    };
+    const safePause = () => {
+      if (!video.paused) {
+        video.pause();
+      }
+    };
+
+    safePlay();
 
     const updateFrame = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -89,13 +101,15 @@ const HeroVideo = () => {
       updateFrame();
     };
 
+    // Optionally, if you have scroll/visibility logic, use safePlay/safePause instead of direct play/pause
+
     return () => {
       window.removeEventListener("resize", onResize);
       if (window.visualViewport) {
         window.visualViewport.removeEventListener("resize", onResize);
       }
       cancelAnimationFrame(animationFrameRef.current);
-      video.pause();
+      safePause();
       video.src = "";
       video.load();
     };
@@ -104,21 +118,22 @@ const HeroVideo = () => {
   return (
     <Box
       sx={{
-        position: "relative",
-        width: "100%",
-        height: "0vh", // qui potresti rivedere se serve o meno
+        position: "fixed",
+        top: 0,
+        left: 0,
+        width: "100vw",
+        height: "100vh",
+        zIndex: -1,
+        pointerEvents: "none",
       }}
     >
       <canvas
         ref={canvasRef}
         style={{
-          position: "fixed",
-          top: 0,
-          left: 0,
-          width: "100%",
-          height: "100%",
-          zIndex: -1,
-          objectFit: "cover", // aiuta a mantenere aspect ratio corretto
+          width: "100vw",
+          height: "100vh",
+          display: "block",
+          objectFit: "cover",
         }}
       />
     </Box>

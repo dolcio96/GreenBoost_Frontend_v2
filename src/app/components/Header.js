@@ -2,8 +2,8 @@
 import React from "react";
 import { Box, Button, Toolbar, AppBar, useTheme } from "@mui/material";
 import StyledButton from "@/components/buttons/StyledButton";
-import { Link } from "react-scroll";
-import NextLink from "next/link";
+import { Link as ScrollLink } from "react-scroll";
+import Link from "next/link";
 
 export const Header = () => {
   const theme = useTheme(); // Usa il tema MUI
@@ -11,7 +11,7 @@ export const Header = () => {
   return (
     <AppBar position="static" sx={{ backgroundColor: theme.palette.background.dark }}>
       <Toolbar sx={{ justifyContent: "space-between" }}>
-        <NextLink href="/" passHref legacyBehavior>
+        <Link href="/" passHref>
           <Box
             component="img"
             src="/LogoD4DChiaro.svg"
@@ -21,7 +21,7 @@ export const Header = () => {
               e.target.src = "https://images.unsplash.com/photo-1563986768609-322da13575f3";
             }}
           />
-        </NextLink>
+        </Link>
         <Box sx={{ display: { xs: "none", md: "flex" }, gap: 4 }}>
           {["Benefits", "Features", "How it works", "Pricing"].map((item) => (
             <Button
@@ -36,9 +36,9 @@ export const Header = () => {
                 },
               }}
             >
-              <Link to={item.toLowerCase().trim().replace(/\s+/g, "")} smooth={true} duration={500} offset={-70}>
+              <ScrollLink to={item.toLowerCase().trim().replace(/\s+/g, "")} smooth={true} duration={500} offset={-70}>
                 {item}
-              </Link>
+              </ScrollLink>
             </Button>
           ))}
         </Box>

@@ -22,10 +22,9 @@ import {
 } from "@mui/material";
 import { styled, useTheme } from "@mui/material/styles";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 
-const countryList = ["Italy", "France", "Germany", "Spain", "United Kingdom", "United States"];
 const industryList = [
     { value: "communication-services", label: "Communication Services" },
     { value: "consumer-discretionary", label: "Consumer Discretionary" },
@@ -106,7 +105,7 @@ const getMenuProps = (theme) => ({
 
 export default function RegistrationForm() {
     const theme = useTheme();
-    const router = useRouter(); // aggiungi questa riga
+    const router = useRouter();
     const [formData, setFormData] = useState({
         fullName: "",
         email: "",
@@ -116,13 +115,35 @@ export default function RegistrationForm() {
         companySize: "",
         turnover: "",
         terms: false,
-        // file: null, // in formData state
     });
-
+    const [countryList, setCountryList] = useState([]);
     const [errors, setErrors] = useState({});
     const [submitted, setSubmitted] = useState(false);
     // const [fileName, setFileName] = useState("");
     const [snackbarOpen, setSnackbarOpen] = useState(false);
+
+    useEffect(() => {
+        const fetchCountries = async () => {
+            try {
+                // Try to get from localStorage first
+                const cached = localStorage.getItem("countryList");
+                if (cached) {
+                    setCountryList(JSON.parse(cached));
+                    return;
+                }
+                // Use lighter endpoint
+                const res = await fetch('https://restcountries.com/v3.1/all?fields=name');
+                if (!res.ok) throw new Error("API error");
+                const data = await res.json();
+                const countries = data.map(country => country.name.common).sort();
+                setCountryList(countries);
+                localStorage.setItem("countryList", JSON.stringify(countries));
+            } catch (err) {
+                setCountryList(["Italy", "France", "Germany", "Spain", "United Kingdom", "United States"]);
+            }
+        };
+        fetchCountries();
+    }, []);
 
     const handleChange = (e) => {
         const { name, value, type, checked, files } = e.target;

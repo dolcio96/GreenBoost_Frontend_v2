@@ -11,7 +11,8 @@ import HowItWorks from "@/components/HowItWorks/page";
 import Benefits from "@/components/Benefits/page";
 import Features from "@/components/Features/page";
 import '@fontsource/rajdhani';
-
+//import "@fontsource/be-vietnam-pro";
+//import "@fontsource/outfit";
 const HomePage = () => (
   <ThemeRegistry>
     <DefaultLayout>

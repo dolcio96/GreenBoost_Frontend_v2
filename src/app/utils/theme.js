@@ -40,7 +40,9 @@ const theme = createTheme({
     },
   },
   typography: {
+    //fontFamily: '"Be Vietnam Pro", "Arial", sans-serif',
     fontFamily: '"Rajdhani", "Arial", sans-serif',
+     //fontFamily: '"Outfit", "Arial", sans-serif',
   },
 });
 
