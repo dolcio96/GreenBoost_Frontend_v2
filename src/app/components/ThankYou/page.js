@@ -1,3 +1,4 @@
+'use client';
 import React, { useState } from "react";
 import { Box, Container, Button, Typography, TextField, IconButton, Grid, Paper, Tooltip } from "@mui/material";
 import { CheckCircleOutline, CalendarToday, LinkedIn, FileCopy } from "@mui/icons-material";
