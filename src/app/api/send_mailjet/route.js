@@ -4,9 +4,9 @@ export async function POST(req) {
   try {
     const { to, subject, text } = await req.json();
     // Use environment variables for Mailjet API credentials
-    const MAILJET_API_KEY = process.env.MAILJET_API_KEY;
-    const MAILJET_API_SECRET = process.env.MAILJET_API_SECRET;
-    const MAILJET_SENDER = process.env.MAILJET_SENDER || 'noreply@greenboost.it';
+    const MAILJET_API_KEY = process.env.NEXT_PUBLIC_MAILJET_API_KEY;
+    const MAILJET_API_SECRET = process.env.NEXT_PUBLIC_MAILJET_API_SECRET;
+    const MAILJET_SENDER = process.env.NEXT_PUBLIC_MAILJET_SENDER || 'noreply@greenboost.it';
 
     if (!MAILJET_API_KEY || !MAILJET_API_SECRET) {
       return NextResponse.json({ error: 'Mailjet credentials not set' }, { status: 500 });

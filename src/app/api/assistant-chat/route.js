@@ -4,8 +4,8 @@ export async function POST(req) {
   try {
     const { input, threadId } = await req.json();
 
-    const OPENAI_API_KEY = process.env.OPENAI_API_KEY;
-    const ASSISTANT_ID = process.env.OPENAI_ASSISTANT_ID;
+    const OPENAI_API_KEY = process.env.NEXT_PUBLIC_OPENAI_API_KEY;
+    const ASSISTANT_ID = process.env.NEXT_PUBLIC_OPENAI_ASSISTANT_ID;
 
     // 1. Create thread if not exists
     let currentThreadId = threadId;
