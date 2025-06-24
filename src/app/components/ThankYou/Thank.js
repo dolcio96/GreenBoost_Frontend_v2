@@ -21,19 +21,6 @@ const ThankYouMainSection = () => {
           D4D is currently under development and not yet available on the market. We're in the demo phase and actively looking for valuable feedback.
           If you're interested, we’d love to show you a preview of how D4D will transform sustainability reports into actionable insights — powered by AI, sector benchmarking, and real-world best practices.
         </Typography>
-        <Button variant="contained"  sx={{
-          px: 4, py: 2 ,
-          backgroundColor: theme.palette.secondary.main,
-          color: theme.palette.text.tertiary,
-          "&:hover": {
-            color: theme.palette.secondary.main,
-            backgroundColor: theme.palette.background.dark,
-            fontWeight: "bold",
-          },
-        }}  >
-          <CalendarToday sx={{ mr: 1 }} />
-          Book a Demo
-        </Button>
       </Box>
     </Paper>
   );

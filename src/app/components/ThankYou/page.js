@@ -6,6 +6,7 @@ import { useTheme } from "@mui/material/styles";
 import ThankYouMainSection from "./Thank.js";
 import WhyAISection from "./WhyAI.js";
 import ContactUsSection from "./ContactUs.js";
+import CalendarBookingSection from "./CalendarBookingSection.js";
 
 const ThankYouPage = () => {
   const theme = useTheme();
@@ -31,6 +32,8 @@ const ThankYouPage = () => {
 
         {/* Main Section */}
         <ThankYouMainSection />
+
+        <CalendarBookingSection userName={"userName"} userEmail={"userEmail"} userCompany={"userCompany"} />
 
         {/* Video Section */}
         <WhyAISection />

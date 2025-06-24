@@ -170,6 +170,22 @@ export default function RegistrationForm() {
         return newErrors;
     };
 
+    const sendMail = async (formData) => {
+        try {
+            await fetch('/api/send_mailjet', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    to: 'enrico.martini@greenboost.it',
+                    subject: 'User Subscription',
+                    text: `A new user has subscribed.\n\nName: ${formData.fullName}\nEmail: ${formData.email}\nCompany: ${formData.companyName}`
+                })
+            });
+        } catch (err) {
+            // Optionally handle error
+        }
+    };
+
     const handleSubmit = async (e) => {
         e.preventDefault();
         const validationErrors = validate();
@@ -209,13 +225,12 @@ export default function RegistrationForm() {
                     body: jsonString,
                 });
                 if (response.ok) {
-                     router.push("/ThankYouPage"); // reindirizza qui
+                    await sendMail(formData);
+                    router.push("/ThankYouPage"); // reindirizza qui
                 } else {
-                    
                     setSnackbarOpen(false);
                 }
             } catch (error) {
-              
                 setSnackbarOpen(false);
             }
         }
